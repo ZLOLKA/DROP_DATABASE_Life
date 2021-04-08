@@ -1,0 +1,37 @@
+{% load static %}
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta name="viewport">
+        <title>{% block Title %}{% endblock %}</title>
+        {% block Style %}
+        {% endblock %}
+        {% block Script %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="Hat">
+            <div class="Anchors">
+                {% block Anchors %}
+                {% endblock %}
+            </div>
+            <div class="Link">
+                {% block Link %}
+                {% endblock %}
+            </div>
+            {% block Hat %}
+            {% endblock %}
+        </div>
+        <div class="Main">
+            {% block Main %}
+            {% endblock %}
+        </div>
+        <div id="Basement">
+            {% block Basement %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
+{% endspaceless %}
