@@ -54,10 +54,10 @@ CREATE TABLE ClientCar(
     FOREIGN KEY (body_type_id) REFERENCES CarBodyType(id_car_body_type)
 );
     """
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey("Client", on_delete=models.CASCADE)
 
-    brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
-    body_type = models.ForeignKey(CarBodyType, on_delete=models.CASCADE)
+    brand = models.ForeignKey("CarBrand", on_delete=models.CASCADE)
+    body_type = models.ForeignKey("CarBodyType", on_delete=models.CASCADE)
 
 
 class Work:
@@ -72,7 +72,7 @@ CREATE TABLE Work(
     FOREIGN KEY (car)    REFERENCES ClientCar(id_client_car)
 );
     """
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    car = models.ForeignKey(ClientCar, on_delete=models.CASCADE)
+    client = models.ForeignKey("Client", on_delete=models.CASCADE)
+    car = models.ForeignKey("ClientCar", on_delete=models.CASCADE)
     start_work = models.DateTimeField()
     end_work = models.DateTimeField(blank=True)
