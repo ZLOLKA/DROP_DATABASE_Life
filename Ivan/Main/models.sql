@@ -1,9 +1,3 @@
-from django.db import models
-
-
-# Create your models here.
-class Client:
-    """
 CREATE TABLE Client(
     id_client         INT         NOT NULL UNIQUE,
     first_name        VARCHAR(20) NOT NULL,
@@ -12,38 +6,16 @@ CREATE TABLE Client(
     contact_number    VARCHAR(15) NOT NULL,
     PRIMARY KEY (id_client)
 );
-    """
-    first_name = models.CharField()
-    last_name = models.CharField(blank=True)
-
-    registration_date = models.DateField()
-    contact_number = models.CharField(max_length=15)
-
-
-class CarBrand:
-    """
 CREATE TABLE  CarBand(
     id_car_brand INT  NOT NULL UNIQUE,
     brand        text NOT NULL UNIQUE,
     PRIMARY KEY (id_car_brand)
 );
-    """
-    brand = models.TextField(unique=True)
-
-
-class CarBodyType:
-    """
 CREATE TABLE CarBodyType(
     id_car_body_type INT  NOT NULL UNIQUE,
     body_type        text NOT NULL UNIQUE,
     PRIMARY KEY (id_car_body_type)
 );
-    """
-    body_type = models.TextField(unique=True)
-
-
-class ClientCar:
-    """
 CREATE TABLE ClientCar(
     id_client_car INT NOT NULL UNIQUE,
     client_id     INT NOT NULL,
@@ -53,15 +25,6 @@ CREATE TABLE ClientCar(
     FOREIGN KEY (brand_id)     REFERENCES CarBand(id_car_brand),
     FOREIGN KEY (body_type_id) REFERENCES CarBodyType(id_car_body_type)
 );
-    """
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-
-    brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
-    body_type = models.ForeignKey(CarBodyType, on_delete=models.CASCADE)
-
-
-class Work:
-    """
 CREATE TABLE Work(
     id_work    INT  NOT NULL UNIQUE,
     client     INT  NOT NULL,
@@ -71,8 +34,3 @@ CREATE TABLE Work(
     FOREIGN KEY (client) REFERENCES Client(id_client),
     FOREIGN KEY (car)    REFERENCES ClientCar(id_client_car)
 );
-    """
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    car = models.ForeignKey(ClientCar, on_delete=models.CASCADE)
-    start_work = models.DateTimeField()
-    end_work = models.DateTimeField(blank=True)
