@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-class Client:
+class Client(models.Model):
     """
 CREATE TABLE Client(
     id_client         INT         NOT NULL UNIQUE,
@@ -13,14 +13,14 @@ CREATE TABLE Client(
     PRIMARY KEY (id_client)
 );
     """
-    first_name = models.CharField()
-    last_name = models.CharField(blank=True)
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20, blank=True)
 
     registration_date = models.DateField()
     contact_number = models.CharField(max_length=15)
 
 
-class CarBrand:
+class CarBrand(models.Model):
     """
 CREATE TABLE  CarBand(
     id_car_brand INT  NOT NULL UNIQUE,
@@ -31,7 +31,7 @@ CREATE TABLE  CarBand(
     brand = models.TextField(unique=True)
 
 
-class CarBodyType:
+class CarBodyType(models.Model):
     """
 CREATE TABLE CarBodyType(
     id_car_body_type INT  NOT NULL UNIQUE,
@@ -42,7 +42,7 @@ CREATE TABLE CarBodyType(
     body_type = models.TextField(unique=True)
 
 
-class ClientCar:
+class ClientCar(models.Model):
     """
 CREATE TABLE ClientCar(
     id_client_car INT NOT NULL UNIQUE,
@@ -60,7 +60,7 @@ CREATE TABLE ClientCar(
     body_type = models.ForeignKey("CarBodyType", on_delete=models.CASCADE)
 
 
-class Work:
+class Work(models.Model):
     """
 CREATE TABLE Work(
     id_work    INT  NOT NULL UNIQUE,
