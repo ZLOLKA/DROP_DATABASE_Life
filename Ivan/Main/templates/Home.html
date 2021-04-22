@@ -5,5 +5,10 @@
 {% endblock %}
 
 {% block Main %}
-First
+<p><a href="DB_Client.html">Create client</a></p>
+<p>----------------------------------------</p>
+{% for client in clients %}
+<p>{{ client.first_name }}</p>
+{% endfor %}
+<p>----------------------------------------</p>
 {% endblock %}
