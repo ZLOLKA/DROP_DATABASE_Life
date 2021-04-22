@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import Client
+from .models import Client, Work
 from .forms import ClientForm, CarBodyTypeForm, CarBrandForm, ClientCarForm, WorkForm
 
 
 # Create your views here.
 def home(request):
     all_clients = Client.objects.all()
+    all_works = Work.objects.all()
     context = {
         "clients": all_clients,
+        "works": all_works,
     }
     return render(request, "Home.html", context)
 

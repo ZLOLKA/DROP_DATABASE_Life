@@ -6,9 +6,22 @@
 
 {% block Main %}
 <p><a href="DB_Client.html">Create client</a></p>
+<p><a href="DB_CarBrand.html">Create car brand</a></p>
+<p><a href="DB_CarBodyType.html">Create car body type</a></p>
+<p><a href="DB_ClientCar.html">Create client car</a></p>
+<p><a href="DB_Work.html">Create work</a></p>
 <p>----------------------------------------</p>
 {% for client in clients %}
-<p>{{ client.first_name }}</p>
+<p>##############Client####################</p>
+<p>Name = {{ client.first_name }}</p>
+<p>Date = {{ client.registration_date }}</p>
+<p>##############Client####################</p>
+{% endfor %}
+{% for work in works %}
+<p>################Work####################</p>
+<p>Name = {{ work.client.first_name }}</p>
+<p>Date = {{ work.client.registration_date }}</p>
+<p>################Work####################</p>
 {% endfor %}
 <p>----------------------------------------</p>
 {% endblock %}

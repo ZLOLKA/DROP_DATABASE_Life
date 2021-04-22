@@ -1,6 +1,6 @@
 from django import forms
 from .models import Client, CarBrand, ClientCar, CarBodyType, Work
-from datetime import date
+from datetime import date, datetime
 
 
 class ClientForm(forms.ModelForm):
@@ -17,12 +17,7 @@ class ClientForm(forms.ModelForm):
 
     class Meta:
         model = Client
-        fields = [
-            "first_name",
-            "last_name",
-            "registration_date",
-            "contact_number",
-        ]
+        fields = "__all__"
 
 
 class CarBrandForm(forms.ModelForm):
@@ -44,6 +39,17 @@ class CarBodyTypeForm(forms.ModelForm):
 
 
 class WorkForm(forms.ModelForm):
+    start_work = forms.DateTimeField(
+        required=False,
+        label="Start work"
+    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get("start_work") is None:
+            cleaned_data["start_work"] = datetime.now()
+        return cleaned_data
+
     class Meta:
         model = Work
         fields = "__all__"

@@ -75,4 +75,4 @@ CREATE TABLE Work(
     client = models.ForeignKey("Client", on_delete=models.CASCADE)
     car = models.ForeignKey("ClientCar", on_delete=models.CASCADE)
     start_work = models.DateTimeField()
-    end_work = models.DateTimeField(blank=True)
+    end_work = models.DateTimeField(blank=True, null=True)
