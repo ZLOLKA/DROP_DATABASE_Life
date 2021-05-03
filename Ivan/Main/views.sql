@@ -1,0 +1,2 @@
+SELECT * FROM Client;
+SELECT * FROM Work;

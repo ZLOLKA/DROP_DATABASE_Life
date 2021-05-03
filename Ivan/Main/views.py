@@ -6,8 +6,8 @@ from .forms import ClientForm, CarBodyTypeForm, CarBrandForm, ClientCarForm, Wor
 
 # Create your views here.
 def home(request):
-    all_clients = Client.objects.all()
-    all_works = Work.objects.all()
+    all_clients = Client.objects.all()  # SELECT * FROM Client;
+    all_works = Work.objects.all()  # SELECT * FROM Work;
     context = {
         "clients": all_clients,
         "works": all_works,
