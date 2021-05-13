@@ -17,6 +17,9 @@ CREATE TABLE Course(
     count_lesson = models.IntegerField()
     cost = models.FloatField()
 
+    def __str__(self):
+        return f"Start = {self.start_course}, End = {self.end_course}"
+
 
 class Teacher(models.Model):
     """
@@ -49,6 +52,9 @@ CREATE TABLE Teacher(
     start_work = models.DateField()
     end_work = models.DateField(null=True)
     courses = models.ManyToManyField(Course)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} {self.patronymic}"
 
 
 class Class(models.Model):
@@ -85,6 +91,9 @@ CREATE TABLE Student(
     birth_day = models.IntegerField()
     passport = models.CharField(max_length=20)
     mob_number = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} {self.patronymic}"
 
 
 class Level(models.Model):
