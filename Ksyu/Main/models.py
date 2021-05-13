@@ -48,6 +48,7 @@ CREATE TABLE Teacher(
     passport = models.CharField(max_length=20, null=True)
     start_work = models.DateField()
     end_work = models.DateField(null=True)
+    courses = models.ManyToManyField(Course)
 
 
 class Class(models.Model):
@@ -94,15 +95,3 @@ CREATE TABLE Level(
 );
     """
     id_Course = models.ForeignKey("Course", on_delete=models.CASCADE)
-
-
-class Course_To_Teacher(models.Model):
-    """
-CREATE TABLE Course_to_Teacher(
-    id_Course   int REFERENCES Course(id),
-    id_Teacher  int REFERENCES Teacher(id),
-    PRIMARY KEY (id_Course, id_Teacher)
-);
-    """
-    id_Course = models.ForeignKey("Course", on_delete=models.CASCADE)
-    id_Teacher = models.ForeignKey("Teacher", on_delete=models.CASCADE)
