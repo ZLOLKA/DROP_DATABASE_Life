@@ -1,4 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from .forms import CourseForm, TeacherForm, ClassForm, StudentForm, LevelForm
 from .models import Course, Teacher, Class, Student, Level
 
 
@@ -18,3 +20,30 @@ def home(request):
         "all_levels":   all_Levels,
     }
     return render(request, "Home.html", context)
+
+
+def db_form(request, table_name):
+    if table_name == "Course":
+        Form = CourseForm
+    elif table_name == "Teacher":
+        Form = TeacherForm
+    elif table_name == "Class":
+        Form = ClassForm
+    elif table_name == "Student":
+        Form = StudentForm
+    elif table_name == "Level":
+        Form = LevelForm
+    else:
+        raise Exception("Incorrect table name")
+
+    form = Form()
+    if request.method == "POST":
+        form = Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/")
+
+    context = {
+        "form": form,
+    }
+    return render(request, "DB_Form.html", context)

@@ -13,48 +13,48 @@
     <p></p>
     <p>Courses_#############################################</p>
     {% for course in all_courses %}
-        <p>course.start_course</p>
-        <p>course.end_course</p>
-        <p>course.count_lesson</p>
-        <p>course.cost</p>
+        <p>{{ course.start_course }}</p>
+        <p>{{ course.end_course }}</p>
+        <p>{{ course.count_lesson }}</p>
+        <p>{{ course.cost }}</p>
     {% endfor %}
     <p>Courses_#############################################</p>
     <p>Teachers_############################################</p>
     {% for teacher in all_teachers %}
-        <p>teacher.first_name</p>
-        <p>teacher.last_name</p>
-        <p>teacher.patronymic</p>
-        <p>teacher.birth_year</p>
-        <p>teacher.birth_month</p>
-        <p>teacher.birth_day</p>
-        <p>teacher.education</p>
-        <p>teacher.mob_number</p>
-        <p>teacher.email</p>
-        <p>teacher.passport</p>
-        <p>teacher.start_work</p>
-        <p>teacher.end_work</p>
+        <p>{{ teacher.first_name }}</p>
+        <p>{{ teacher.last_name }}</p>
+        <p>{{ teacher.patronymic }}</p>
+        <p>{{ teacher.birth_year }}</p>
+        <p>{{ teacher.birth_month }}</p>
+        <p>{{ teacher.birth_day }}</p>
+        <p>{{ teacher.education }}</p>
+        <p>{{ teacher.mob_number }}</p>
+        <p>{{ teacher.email }}</p>
+        <p>{{ teacher.passport }}</p>
+        <p>{{ teacher.start_work }}</p>
+        <p>{{ teacher.end_work }}</p>
     {% endfor %}
     <p>Teachers_############################################</p>
     <p>Classes_#############################################</p>
     {% for class in all_classes %}
-        <p>class.id_Course</p>
+        <p>{{ class.id_Course }}</p>
     {% endfor %}
     <p>Classes_#############################################</p>
     <p>Students_############################################</p>
     {% for student in all_students %}
-        <p>student.id_Class</p>
-        <p>student.first_name</p>
-        <p>student.last_name</p>
-        <p>student.patronymic</p>
-        <p>student.birth_year</p>
-        <p>student.birth_month</p>
-        <p>student.birth_day</p>
-        <p>student.passport</p>
+        <p>{{ student.id_Class }}</p>
+        <p>{{ student.first_name }}</p>
+        <p>{{ student.last_name }}</p>
+        <p>{{ student.patronymic }}</p>
+        <p>{{ student.birth_year }}</p>
+        <p>{{ student.birth_month }}</p>
+        <p>{{ student.birth_day }}</p>
+        <p>{{ student.passport }}</p>
     {% endfor %}
     <p>Students_############################################</p>
     <p>Levels_##############################################</p>
     {% for level in all_levels %}
-        <p>level.id_Course</p>
+        <p>{{ level.id_Course }}</p>
     {% endfor %}
     <p>Levels_##############################################</p>
 {% endblock %}
